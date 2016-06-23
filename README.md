@@ -89,3 +89,26 @@ miweb.es o www.miweb.es
 
 
 [VER VIDEOS](https://youtu.be/-IKkagNzSL8)
+
+
+##POSIBLES INCIDENCIAS  
+
+EN PW miweb.es/admin
+
+Nos aparece en rojo el siguiente mensaje en la parte superior de ProcessWire cuando entramos:
+
+Unrecognized HTTP host: "miweb.es" ->Please update your $config -> httpHost setting in site/config.php
+
+Para solucionarlo vamos a config.php
+y ponemos en la línea 82 aprox. lo siguiente:
+
+$config->httpHosts = array('miweb.es', 'www.miweb.es');
+
+SI NO SALEN FOTOS EN PÁGINA RECETAS
+
+Hay que cambiar la url en el archivo ubicado en scripts llamado factories.js
+
+.factory('pw', function($http, $location) {
+
+    var webService = "http://"+$location.$$host+"/web-service/";
+
